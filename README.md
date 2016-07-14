@@ -1,10 +1,11 @@
 # FPLCplot
-
+![Preview of FPLC plot](preview.png)
 `FPLCplot` is Python based tool for plotting chromatograms outputted from the GE Life Sciences / Amersham Biosciences UNICORN 5.X software (for AKTA FPLC systems). This tool is accessible through an interactive Jupyter notebook (using iPython widgets for interactivity) or through a TKinter GUI interface.
 
 #### Dependencies
 - Python 2.7
 - Matplotlib
+- Seaborn
 - NumPy
 - ipywidgets
 - Pandas
@@ -14,6 +15,9 @@
 
 ### FPLCPlot via Jupyter notebook
 To launch the interactive Jupyter notebook interface, clone this repository locally, and then run the command `jupyter notebook` from a terminal when in the same directory.
+
+### FPLCPlot TKinter GUI
+To launch the TKinter GUI interface to FPLCPlot, first simply clone the repository locally. Then double click the `FPLCPlot.pyw` file from your file explorer, which should automatically launch the GUI.
 
 ---
 

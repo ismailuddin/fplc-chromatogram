@@ -1,5 +1,17 @@
-# Ismail Uddin, 2015
+# UNICORN 5.0/6.0 FPLC chromatogram curves plotter
+# Copyright (C) 2016, Ismail Uddin
 # www.github.com/ismailuddin/
+# www.scienceexposure.com
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 
 from Tkinter import *
 from ttk import *
@@ -86,7 +98,6 @@ class App:
 		plotTraces([self.filename], self.title.get(), output=self.filenameExport.get(), f_format=self.fileFormat.get(), y_lower=int(self.yLower.get()), y_upper=int(self.yUpper.get()), second_trace=self.secondTrace.get())
 		plt.show()
 
-import os
 
 root = Tk()
 root.wm_title('UNICORN 6 - AKTA Chromatogram plotter')
