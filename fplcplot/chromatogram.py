@@ -39,8 +39,17 @@ def importDataFromExcelFile(filename):
 	
 	return uvTrace, conductivityTrace, percentageB, fractions
 
+def convertBufferB(percentage, A, B):
+	"""
+	Convert the value of percentage buffer B
+	to an absolute value of concentration.
+	"""
 
-def plotTraces(file_list, title, output=True, f_format=".png", y_lower=0, y_upper=100, second_trace=False):
+	a = (100 - percentage) * A
+	b = percentage * B
+	return (a + b)/100.0
+
+def plotTraces(file_list, title, output=True, f_format=".png", y_lower=0, y_upper=100, second_trace=False, buffer_A=10.0, buffer_B=400.0):
 	"""
 	Function for plotting parsed
 	----------------------------------------------------------------
@@ -102,9 +111,20 @@ def plotTraces(file_list, title, output=True, f_format=".png", y_lower=0, y_uppe
 			ax2.set_xticklabels(a[::], rotation='vertical', fontsize=12)
 			ax2.grid(alpha=0.5)
 		
+		# Plot buffer B absolute concentration as a second trace for first .XLS file
+		if second_trace == 'buffer_b_abs':
+			if j == 0:
+				ax3 = ax1.twinx()
+				bufferB_x = filter(lambda x: x != '0', percentageB[0:,0])
+				bufferB = percentageB[0:len(bufferB_x),1]
+				bufferB_abs = [convertBufferB(x, buffer_A, buffer_B) for x in bufferB]
+				ax3.plot(bufferB_x, bufferB_abs, sns.xkcd_rgb["pale red"])
+				ax3.set_ylabel("Buffer B (mM)")
+				ax3.grid(False)
 
-		# Plot buffer B concentration as a second trace for first .XLS file
-		if second_trace == 'buffer_b':
+
+		# Plot buffer B percentage as a second trace for first .XLS file
+		elif second_trace == 'buffer_b':
 			if j == 0:
 				ax3 = ax1.twinx()
 				bufferB_x = filter(lambda x: x != '0', percentageB[0:,0])

@@ -55,36 +55,49 @@ class App:
 		self.yUpperEntry = Entry(frame, font=(15), textvariable=self.yUpper)
 		self.yUpperEntry.grid(row=5, column=1, padx=5, pady=5)
 
+		self.bLimitsLabel= Label(frame, text="Buffer A / B concentration (mM)")
+		self.bLimitsLabel.grid(row=6, padx=5, pady=5, columnspan=2)
+
+		self.bufferA = StringVar()
+		self.bufferAEntry = Entry(frame, font=(15), textvariable=self.bufferA)
+		self.bufferAEntry.grid(row=7, column=0, padx=5, pady=5)
+		self.bufferA.set("0")
+
+		self.bufferB = StringVar()
+		self.bufferBEntry = Entry(frame, font=(15), textvariable=self.bufferB)
+		self.bufferBEntry.grid(row=7, column=1, padx=5, pady=5)
+		self.bufferB.set("400")
+
 		self.filenameExportLabel = Label(frame, text="Filename for export:")
-		self.filenameExportLabel.grid(row=6, padx=5, pady=5, columnspan=2)
+		self.filenameExportLabel.grid(row=8, padx=5, pady=5, columnspan=2)
 
 		self.filenameExport = StringVar()
 		self.filenameExportEntry = Entry(frame, font=(15), textvariable=self.filenameExport)
-		self.filenameExportEntry.grid(row=7, padx=5, pady=5, columnspan=2)
+		self.filenameExportEntry.grid(row=9, padx=5, pady=5, columnspan=2)
 
 		self.fileFormatLabel = Label(frame, text="File format:")
-		self.fileFormatLabel.grid(row=8, padx=5, pady=5, column=0)
+		self.fileFormatLabel.grid(row=10, padx=5, pady=5, column=0)
 
 		self.secondTraceLabel = Label(frame, text="Second trace:")
-		self.secondTraceLabel.grid(row=8, padx=5, pady=5, column=1)
+		self.secondTraceLabel.grid(row=10, padx=5, pady=5, column=1)
 
 		self.fileFormat = StringVar()
 		self.fileFormat.set(".png")
 
 		self.fileFormatSelect = OptionMenu(frame, self.fileFormat, ".png", ".pdf")
-		self.fileFormatSelect.grid(row=9, column=0, padx=5, pady=5)
+		self.fileFormatSelect.grid(row=11, column=0, padx=5, pady=5)
 
 		self.secondTrace = StringVar()
 		self.secondTrace.set("None")
 
-		secondTraceSelect = OptionMenu(frame, self.secondTrace, "None", "buffer_b", "conductivity")
-		secondTraceSelect.grid(row=9, column=1, padx=5, pady=5)
+		secondTraceSelect = OptionMenu(frame, self.secondTrace, "None", "buffer_b", "buffer_b_abs", "conductivity")
+		secondTraceSelect.grid(row=11, column=1, padx=5, pady=5)
 
 		self.plotBtn = Button(frame, text="Plot data", command=self.plot)
-		self.plotBtn.grid(row=10, padx=5, pady=5, columnspan=2)
+		self.plotBtn.grid(row=12, padx=5, pady=5, columnspan=2)
 
 		label = Label(frame, text="(C) 2016, Ismail Uddin \n www.github.com/ismailuddin/")
-		label.grid(row=11, padx=5, pady=5, columnspan=2)
+		label.grid(row=13, padx=5, pady=5, columnspan=2)
 
 	def loadFile(self):
 		extensions = [('Excel file', '.xls')]
@@ -95,12 +108,12 @@ class App:
 		
 		
 	def plot(self):
-		plotTraces([self.filename], self.title.get(), output=self.filenameExport.get(), f_format=self.fileFormat.get(), y_lower=int(self.yLower.get()), y_upper=int(self.yUpper.get()), second_trace=self.secondTrace.get())
+		plotTraces([self.filename], self.title.get(), output=self.filenameExport.get(), f_format=self.fileFormat.get(), y_lower=int(self.yLower.get()), y_upper=int(self.yUpper.get()), second_trace=self.secondTrace.get(), buffer_A=int(self.bufferA.get()), buffer_B=int(self.bufferB.get()))
 		plt.show()
 
 
 root = Tk()
 root.wm_title('UNICORN 6 - AKTA Chromatogram plotter')
 app = App(root)
-root.geometry("500x415+20+20")
+root.geometry("500x475+20+20")
 root.mainloop()

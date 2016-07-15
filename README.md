@@ -4,7 +4,7 @@
 
 The main advantages of this tool are:
 * Generating a plot with gridlines which correspond to the fractions, rather than regular divisions of the x-axis.
-* (**Forthcoming feature**) Plotting actual molar concentrations on the secondary y-axis, in place of the percentage of buffer B.
+* Plotting actual molar concentrations on the secondary y-axis, in place of the percentage of buffer B.
 
 #### Dependencies
 - Python 2.7
@@ -33,4 +33,4 @@ Using the Jupyter notebook interface to `FPLCplot`, UV absorbance traces from mu
 Gridlines on the x-axis are divided according to the fractions from the FPLC machine.
 
 ### Buffer B concentration on second y-axis
-Buffer B concentration may be plotted on a secondary y-axis. The first file alphabetically in the file list is chosen as the file for the buffer B trace, when plotting multiple traces on one figure.
+Buffer B concentration may be plotted on a secondary y-axis, as a percentage and absolute concentration in molarity. The first file alphabetically in the file list is chosen as the file for the buffer B trace, when plotting multiple traces on one figure.
