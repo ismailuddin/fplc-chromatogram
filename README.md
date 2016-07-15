@@ -1,6 +1,10 @@
 # FPLCplot
 ![Preview of FPLC plot](preview.png)
-`FPLCplot` is Python based tool for plotting chromatograms outputted from the GE Life Sciences / Amersham Biosciences UNICORN 5.X software (for AKTA FPLC systems). This tool is accessible through an interactive Jupyter notebook (using iPython widgets for interactivity) or through a TKinter GUI interface.
+`FPLCplot` is Python based tool for plotting high quality presentable chromatograms, with data outputted from the GE Life Sciences / Amersham Biosciences UNICORN 5.X software (for AKTA FPLC systems). This tool is accessible through an interactive Jupyter notebook (using iPython widgets for interactivity) or through a TKinter GUI interface.
+
+The main advantages of this tool are:
+* Generating a plot with gridlines which correspond to the fractions, rather than regular divisions of the x-axis.
+* (**Forthcoming feature**) Plotting actual molar concentrations on the secondary y-axis, in place of the percentage of buffer B.
 
 #### Dependencies
 - Python 2.7
